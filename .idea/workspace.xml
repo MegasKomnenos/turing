@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="" />
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="More works">
+      <change afterPath="$PROJECT_DIR$/src/TuringMachineExternals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInstructionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInstructionSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInternals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInternals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/turing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/turing.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AB2clhYaTxvcC4lPHK0n5rkMfP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -18,10 +39,45 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RunManager" selected="JUnit.TuringMachineTest">
+    <configuration name="TuringMachineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="turing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TuringMachineTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TuringMachineTest.testBusyBeaver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="turing" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="TuringMachineTest" />
+      <option name="METHOD_NAME" value="testBusyBeaver" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TuringMachineTest" />
+        <item itemvalue="JUnit.TuringMachineTest.testBusyBeaver" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -43,5 +99,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="More works" />
+    <option name="LAST_COMMIT_MESSAGE" value="More works" />
   </component>
 </project>
