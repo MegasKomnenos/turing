@@ -42,6 +42,11 @@ class TuringMachineTest {
         assert(tape.get(-4) == ' ');
         assert(tape.get(-3) == ' ');
         assert(tape.get(-2) == ' ');
+
+        tape.clear();
+
+        assert(tape.get(0) == ' ');
+        assert(tape.get(-1) == ' ');
     }
     @DisplayName("Test basic functionalities of a turing machine")
     @Test

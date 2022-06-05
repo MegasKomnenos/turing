@@ -9,6 +9,11 @@ class TuringMachineTape {
         negative = new ArrayList();
     }
 
+    void clear() {
+        positive.clear();
+        negative.clear();
+    }
+
     char get(int i) {
         try {
             if(i < 0) {
@@ -80,6 +85,10 @@ class TuringMachineInternals {
     }
     void remove_instruction(char state, char symbol) {
         instructions.remove_instruction(state, symbol);
+    }
+
+    void clear_tape() {
+        tape.clear();
     }
 
     void run_once() {
