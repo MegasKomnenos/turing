@@ -51,13 +51,14 @@ class TuringMachineTape {
 
 class TuringMachineInternals {
     int head;
-    char state;
+    char state, halt;
     TuringMachineInstructionSet instructions;
     TuringMachineTape tape;
 
     public TuringMachineInternals(TuringMachineTape t) {
         head = 0;
         state = ' ';
+        halt = ' ';
 
         instructions = new TuringMachineInstructionSet();
         tape = t;
@@ -73,10 +74,10 @@ class TuringMachineInternals {
         head = h;
     }
     void set_state(char s) { state = s; }
+    void set_halt(char h) { halt = h; }
     int get_head() { return head; }
-    char get_state() {
-        return state;
-    }
+    char get_state() { return state; }
+    char get_halt() { return halt; }
     public ArrayList<TuringMachineInstruction> get_instructions() {
         return instructions.get_instructions();
     }
@@ -105,6 +106,12 @@ class TuringMachineInternals {
             else {
                 --head;
             }
+        }
+    }
+
+    void run(int i) {
+        while(i-- > 0 && state != halt) {
+            run_once();
         }
     }
 }

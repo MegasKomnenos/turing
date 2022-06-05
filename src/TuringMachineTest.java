@@ -106,6 +106,7 @@ class TuringMachineTest {
         machine.add_instruction('C', '1', 'H', '1', true);
 
         machine.set_state('A');
+        machine.set_halt('H');
 
         machine.run_once();
         assert(machine.get_head() == 1);
@@ -133,6 +134,13 @@ class TuringMachineTest {
         assert(machine.get_head() == 0);
         machine.run_once();
         assert(machine.get_head() == 1);
-        assert(machine.get_state() == 'H');
+        assert(machine.get_state() == machine.get_halt());
+
+        machine.clear_tape();
+        machine.set_state('A');
+
+        machine.run(100);
+
+        assert(machine.get_state() == machine.get_halt());
     }
 }
