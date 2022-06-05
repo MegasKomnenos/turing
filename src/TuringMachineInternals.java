@@ -9,13 +9,38 @@ class TuringMachineTape {
         negative = new ArrayList();
     }
 
-    SimpleImmutableEntry<ArrayList<Character>, Integer> get(int i) {
+    char get(int i) {
+        try {
+            if(i < 0) {
+                return negative.get(-1 - i);
+            }
+            else {
+                return positive.get(i);
+            }
+        }
+        catch(IndexOutOfBoundsException e) {
+            return ' ';
+        }
+    }
+
+    void add(int i, char c) {
+        int j;
+        ArrayList<Character> list;
+
         if(i < 0) {
-            return new SimpleImmutableEntry(negative, -1 - i);
+            j = -1 - i;
+            list = negative;
         }
         else {
-            return new SimpleImmutableEntry(positive, i);
+            j = i;
+            list = positive;
         }
+
+        while(j >= list.size()) {
+            list.add(' ');
+        }
+
+        list.set(j, c);
     }
 }
 
@@ -27,36 +52,17 @@ class TuringMachineInternals {
 
     public TuringMachineInternals(TuringMachineTape t) {
         head = 0;
-        state = '\0';
+        state = ' ';
 
         instructions = new TuringMachineInstructionSet();
         tape = t;
     }
 
-    private char get_symbol(ArrayList<Character> list, int i) {
-        if(i < list.size()) {
-            return list.get(i);
-        }
-        else {
-            return '\0';
-        }
-    }
-    char get_symbol(int i) {
-        var tmp = tape.get(i);
-
-        return get_symbol(tmp.getKey(), tmp.getValue());
-    }
-    private void add_symbol(ArrayList<Character> list, int i, char c) {
-        while(i >= list.size()) {
-            list.add('\0');
-        }
-
-        list.set(i, c);
+    char get(int i) {
+        return tape.get(i);
     }
     void add_symbol(int i, char c) {
-        var tmp = tape.get(i);
-
-        add_symbol(tmp.getKey(), tmp.getValue(), c);
+        tape.add(i, c);
     }
     void set_head(int h) {
         head = h;
@@ -77,7 +83,7 @@ class TuringMachineInternals {
     }
 
     void run_once() {
-        var move = instructions.get(state, get_symbol(head));
+        var move = instructions.get(state, get(head));
 
         if(move != null) {
             state = move.state_after;
