@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add clear method to tape">
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add halting state to machine internals&#10;&#10;Also, use it to add a run method">
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TapePanel.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/TuringMachineExternals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TuringMachineInternals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInternals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TuringMachineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +29,16 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2AB2clhYaTxvcC4lPHK0n5rkMfP" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Downloaded.Files.Path.Enabled": "false",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -47,7 +51,14 @@
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.TuringMachineTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="turing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TuringMachineTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="turing" />
       <option name="PACKAGE_NAME" value="" />
@@ -69,6 +80,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.TuringMachineTest" />
         <item itemvalue="JUnit.TuringMachineTest.testBusyBeaver" />
       </list>
@@ -104,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654472981390</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add halting state to machine internals&#10;&#10;Also, use it to add a run method">
+      <created>1654473050253</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1654473050253</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,9 +138,11 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="More works" />
     <MESSAGE value="Reorganize tape related operations around TuringMachineTape" />
     <MESSAGE value="Add clear method to tape" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add clear method to tape" />
+    <MESSAGE value="Add halting state to machine internals&#10;&#10;Also, use it to add a run method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add halting state to machine internals&#10;&#10;Also, use it to add a run method" />
   </component>
 </project>
