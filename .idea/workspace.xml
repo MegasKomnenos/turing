@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add halting state to machine internals&#10;&#10;Also, use it to add a run method">
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TapePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TuringMachineExternals.java" afterDir="false" />
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add basic gui for displaying tape value">
+      <change afterPath="$PROJECT_DIR$/resources/icons/0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/10.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/11.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/7.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/8.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TuringMachinePanels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TapePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineExternals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineExternals.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,11 +58,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "/home/kjh/IdeaProjects/turing/resources",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/icons" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -123,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654473050253</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add basic gui for displaying tape value">
+      <created>1654489447554</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1654489447554</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +171,7 @@
     <MESSAGE value="Reorganize tape related operations around TuringMachineTape" />
     <MESSAGE value="Add clear method to tape" />
     <MESSAGE value="Add halting state to machine internals&#10;&#10;Also, use it to add a run method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add halting state to machine internals&#10;&#10;Also, use it to add a run method" />
+    <MESSAGE value="Add basic gui for displaying tape value" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add basic gui for displaying tape value" />
   </component>
 </project>
