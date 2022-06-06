@@ -3,21 +3,52 @@ import java.awt.*;
 import java.util.ArrayList;
 
 class TapePanel extends JPanel {
-    JLabel label;
+    HeadPanel head;
+    JPanel indexPanel, valuePanel;
+    JLabel indexLabel, valueLabel;
 
-    public TapePanel(int width, int height, int label_size) {
-        label = new JLabel("0");
-        label.setFont(new Font(Font.SERIF, Font.PLAIN, label_size));
-        label.setHorizontalAlignment(JLabel.CENTER);
-        add(label);
-        setMinimumSize(new Dimension(width, height));
+    public TapePanel(int width, int height, int size) {
         setPreferredSize(new Dimension(width, height));
-        setBackground(Color.LIGHT_GRAY);
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        head = new HeadPanel(width, height / 6, size);
+        indexPanel = new JPanel();
+        valuePanel = new JPanel();
+        indexLabel = new JLabel("0");
+        valueLabel = new JLabel("0");
+
+        indexLabel.setFont(new Font(Font.SERIF, Font.PLAIN, height / 8));
+        indexLabel.setHorizontalAlignment(JLabel.CENTER);
+        indexLabel.setVerticalAlignment(JLabel.CENTER);
+        indexPanel.add(indexLabel);
+        indexPanel.setPreferredSize(new Dimension(width, height / 5));
+        indexPanel.setBackground(Color.LIGHT_GRAY);
+        indexPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        valueLabel.setFont(new Font(Font.SERIF, Font.PLAIN, height / 4));
+        valueLabel.setHorizontalAlignment(JLabel.CENTER);
+        valueLabel.setVerticalAlignment(JLabel.CENTER);
+        valuePanel.add(valueLabel);
+        valuePanel.setPreferredSize(new Dimension(width, height / 3));
+        valuePanel.setBackground(Color.LIGHT_GRAY);
+        valuePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        add(head);
+        add(indexPanel);
+        add(valuePanel);
     }
 
-    void set(String s) {
-        label.setText(s);
+    void set_index(String s) {
+        indexLabel.setText(s);
+    }
+    void set_value(String s) {
+        valueLabel.setText(s);
+    }
+    void add_icon(ImageIcon icon) {
+        head.add(icon);
+    }
+    void clear_icon() {
+        head.clear();
     }
 }
 
@@ -27,16 +58,13 @@ class HeadPanel extends JPanel {
 
     public HeadPanel(int width, int height, int s) {
         size = s;
-        setMinimumSize(new Dimension(width, height));
         setPreferredSize(new Dimension(width, height));
     }
 
     void add(ImageIcon icon) {
         var label = new JLabel();
         label.setIcon(icon);
-        label.setMinimumSize(new Dimension(size, size));
         label.setPreferredSize(new Dimension(size, size));
-        label.setMaximumSize(new Dimension(size, size));
         add(label);
     }
 

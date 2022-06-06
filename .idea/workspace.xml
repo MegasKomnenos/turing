@@ -4,23 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add basic gui for displaying tape value">
-      <change afterPath="$PROJECT_DIR$/resources/icons/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TuringMachinePanels.java" afterDir="false" />
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Add icons and supporting code to display machine head locations">
+      <change afterPath="$PROJECT_DIR$/src/TuringMachineInspectorFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TuringMachineTapeFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TapePanel.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachineExternals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineExternals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachinePanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachinePanels.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,22 +37,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "/home/kjh/IdeaProjects/turing/resources",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/kjh/IdeaProjects/turing/resources&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources" />
@@ -151,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654489447554</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add icons and supporting code to display machine head locations">
+      <created>1654492491389</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654492491389</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +168,7 @@
     <MESSAGE value="Add clear method to tape" />
     <MESSAGE value="Add halting state to machine internals&#10;&#10;Also, use it to add a run method" />
     <MESSAGE value="Add basic gui for displaying tape value" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add basic gui for displaying tape value" />
+    <MESSAGE value="Add icons and supporting code to display machine head locations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add icons and supporting code to display machine head locations" />
   </component>
 </project>
