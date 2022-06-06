@@ -11,13 +11,13 @@ class TuringMachineExternals {
     public TuringMachineExternals() {
         tape = new TuringMachineTape();
         machines = new ArrayList();
-        tapeFrame = new TuringMachineTapeFrame();
+        tapeFrame = new TuringMachineTapeFrame(tape, machines);
 
         add_machine();
         add_machine();
         add_machine();
 
-        tapeFrame.refresh_tape_labels(machines, tape);
+        tapeFrame.refresh_tape_labels();
     }
 
     public void add_machine() {

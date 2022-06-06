@@ -54,23 +54,35 @@ class TapePanel extends JPanel {
 
 class HeadPanel extends JPanel {
     int size;
-    ArrayList<JLabel> label;
+    ArrayList<JLabel> labels;
 
     public HeadPanel(int width, int height, int s) {
         size = s;
         setPreferredSize(new Dimension(width, height));
+        labels = new ArrayList();
     }
 
     void add(ImageIcon icon) {
+        for(var l : labels) {
+            if(!l.isVisible()) {
+                l.setIcon(icon);
+                l.setVisible(true);
+                return;
+            }
+        }
+
         var label = new JLabel();
         label.setIcon(icon);
         label.setPreferredSize(new Dimension(size, size));
+        labels.add(label);
         add(label);
     }
 
     void clear() {
-        if(label != null) {
-            label.clear();
+        for(var l : labels) {
+            l.setIcon(null);
+            l.setVisible(false);
+            l.revalidate();
         }
     }
 }
