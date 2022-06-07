@@ -64,19 +64,23 @@ class HeadPanel extends JPanel {
 
 abstract class RowPanel<E> extends JPanel {
     ArrayList<E> panels;
+    int width, height, size;
 
-    public RowPanel(int width, int height, int size, int num) {
+    public RowPanel(int w, int h, int s, int num) {
         setPreferredSize(new Dimension(width, height));
+        width = w;
+        height = h;
+        size = s;
 
         panels = Stream
-                .generate(() -> genPanel(width, height, size))
+                .generate(() -> genPanel())
                 .limit(num)
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
     E get(int i) { return panels.get(i); }
 
-    abstract E genPanel(int width, int height, int size);
+    abstract E genPanel();
 }
 
 class ItemRowPanel extends RowPanel<SimpleEntry<JPanel, JLabel>> {
@@ -84,7 +88,7 @@ class ItemRowPanel extends RowPanel<SimpleEntry<JPanel, JLabel>> {
         super(width, height, size, num);
     }
 
-    SimpleEntry<JPanel, JLabel> genPanel(int width, int height, int size) {
+    SimpleEntry<JPanel, JLabel> genPanel() {
         var p = new JPanel();
         var l = new JLabel("0");
 
@@ -108,7 +112,7 @@ class HeadRowPanel extends RowPanel<HeadPanel> {
         super(width, height, size, num);
     }
 
-    HeadPanel genPanel(int width, int height, int size) {
+    HeadPanel genPanel() {
         var p = new HeadPanel(width, height, size);
         add(p);
         return p;
