@@ -39,6 +39,10 @@ class TuringMachineTapeFrame extends JFrame {
         indexPanel = new ItemRowPanel(100, 50, 25, width);
         valuePanel = new ItemRowPanel(100, 100, 60, width);
 
+        headPanel.setPreferredSize(new Dimension(100 * width, 40));
+        indexPanel.setPreferredSize(new Dimension(100 * width, 50));
+        valuePanel.setPreferredSize(new Dimension(100 * width, 100));
+
         mainPanel.add(headPanel);
         mainPanel.add(indexPanel);
         mainPanel.add(valuePanel);
