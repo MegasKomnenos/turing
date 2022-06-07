@@ -95,7 +95,7 @@ class TuringMachineTapeFrame extends JFrame {
 
             for(var m : machines) {
                 if(m.getKey().get_head() == i) {
-                    t.add(m);
+                    t.add(m, machines.indexOf(m));
                 }
             }
 

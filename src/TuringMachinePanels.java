@@ -19,9 +19,11 @@ class HeadPanel extends JPanel {
 
     class TuringMachineHeadButtonActionListener implements ActionListener {
         TuringMachineInternals machine;
+        int index;
 
-        public TuringMachineHeadButtonActionListener(TuringMachineInternals m) {
+        public TuringMachineHeadButtonActionListener(TuringMachineInternals m, int i) {
             machine = m;
+            index = i;
         }
 
         @Override
@@ -29,12 +31,12 @@ class HeadPanel extends JPanel {
         }
     }
 
-    void add(SimpleEntry<TuringMachineInternals, ImageIcon> entry) {
+    void add(SimpleEntry<TuringMachineInternals, ImageIcon> entry, int i) {
         for(var b : buttons) {
             if(!b.isVisible()) {
                 b.setIcon(entry.getValue());
                 b.setVisible(true);
-                b.addActionListener(new TuringMachineHeadButtonActionListener(entry.getKey()));
+                b.addActionListener(new TuringMachineHeadButtonActionListener(entry.getKey(), i));
                 return;
             }
         }
@@ -45,7 +47,7 @@ class HeadPanel extends JPanel {
         button.setOpaque(false);
         button.setBorderPainted(false);
         button.setBackground(Color.WHITE);
-        button.addActionListener(new TuringMachineHeadButtonActionListener(entry.getKey()));
+        button.addActionListener(new TuringMachineHeadButtonActionListener(entry.getKey(), i));
         buttons.add(button);
         add(button);
     }
