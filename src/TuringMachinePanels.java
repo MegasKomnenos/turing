@@ -28,6 +28,7 @@ class HeadPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            new TuringMachineInspectorFrame(machine, index);
         }
     }
 
@@ -85,27 +86,46 @@ abstract class RowPanel<E> extends JPanel {
     abstract E genPanel();
 }
 
-class ItemRowPanel extends RowPanel<SimpleEntry<JPanel, JLabel>> {
-    public ItemRowPanel(int width, int height, int size, int num) {
-        super(width, height, size, num);
+class TwoLabelRowPanel extends RowPanel<SimpleEntry<JPanel, SimpleEntry<JLabel, JLabel>>> {
+    int size_other;
+
+    public TwoLabelRowPanel(int w, int h, int s, int ss, int num) {
+        super(w, h, s, num);
+
+        size_other = ss;
+
+        for(var p : panels) {
+            p.getValue().getValue().setFont(new Font(Font.SERIF, Font.PLAIN, size_other));
+        }
     }
 
-    SimpleEntry<JPanel, JLabel> genPanel() {
+    void set(String s, String ss, int index) {
+        assert(index >= 0 && index < panels.size());
+
+        panels.get(index).getValue().getKey().setText(s);
+        panels.get(index).getValue().getValue().setText(ss);
+    }
+
+    SimpleEntry<JPanel, SimpleEntry<JLabel, JLabel>> genPanel() {
         var p = new JPanel();
         var l = new JLabel("0");
+        var ll = new JLabel("0");
 
         l.setFont(new Font(Font.SERIF, Font.PLAIN, size));
-        l.setHorizontalAlignment(JLabel.CENTER);
-        l.setVerticalAlignment(JLabel.CENTER);
+        ll.setFont(new Font(Font.SERIF, Font.PLAIN, size_other));
 
+        l.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ll.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         p.add(l);
+        p.add(ll);
         p.setPreferredSize(new Dimension(width, height));
-        p.setBackground(Color.LIGHT_GRAY);
         p.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         add(p);
 
-        return new SimpleEntry<>(p, l);
+        return new SimpleEntry<>(p, new SimpleEntry<>(l, ll));
     }
 }
 

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Refactor panel code around a new abstract class RowPanel&lt;E&gt;">
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Minor size changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachineInspectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInspectorFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachinePanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachinePanels.java" afterDir="false" />
@@ -167,7 +167,28 @@
       <option name="project" value="LOCAL" />
       <updated>1654569898200</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Minor changes to RowPanel">
+      <created>1654575833602</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1654575833602</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Make TuringMachineHeadButtonActionListener.add to accept integer index as input">
+      <created>1654575911916</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1654575911916</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Minor size changes">
+      <created>1654575928930</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1654575928930</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -192,6 +213,9 @@
     <MESSAGE value="Refactored tape frame around a newly added TuringMachineTapeFrame class" />
     <MESSAGE value="Allow user to move the tape" />
     <MESSAGE value="Refactor panel code around a new abstract class RowPanel&lt;E&gt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor panel code around a new abstract class RowPanel&lt;E&gt;" />
+    <MESSAGE value="Minor changes to RowPanel" />
+    <MESSAGE value="Make TuringMachineHeadButtonActionListener.add to accept integer index as input" />
+    <MESSAGE value="Minor size changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor size changes" />
   </component>
 </project>
