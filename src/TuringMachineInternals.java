@@ -78,14 +78,14 @@ class TuringMachineInternals {
     int get_head() { return head; }
     char get_state() { return state; }
     char get_halt() { return halt; }
-    public ArrayList<TuringMachineInstruction> get_instructions() {
-        return instructions.get_instructions();
+    void add_instruction(int i, char state_before, char symbol_before, char state_after, char symbol_after, char right) {
+        instructions.add_instruction(i, state_before, symbol_before, state_after, symbol_after, right);
     }
-    void add_instruction(char state_before, char symbol_before, char state_after, char symbol_after, boolean right) {
-        instructions.add_instruction(state_before, symbol_before, state_after, symbol_after, right);
+    void remove_instruction(int i) {
+        instructions.remove_instruction(i);
     }
-    void remove_instruction(char state, char symbol) {
-        instructions.remove_instruction(state, symbol);
+    TuringMachineInstruction get_instruction(int i) {
+        return instructions.get(i);
     }
 
     void clear_tape() {
@@ -93,14 +93,14 @@ class TuringMachineInternals {
     }
 
     void run_once() {
-        var move = instructions.get(state, get(head));
+        var move = instructions.query(state, get(head));
 
         if(move != null) {
-            state = move.state_after;
+            state = move.data[2];
 
-            add_symbol(head, move.symbol_after);
+            add_symbol(head, move.data[3]);
 
-            if(move.right) {
+            if(move.data[4] == 'R') {
                 ++head;
             }
             else {

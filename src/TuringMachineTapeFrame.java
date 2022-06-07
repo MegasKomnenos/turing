@@ -2,88 +2,102 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Paths;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 class TuringMachineTapeFrame extends JFrame {
     int head, width;
     JPanel mainPanel;
     HeadRowPanel headPanel;
     TwoLabelRowPanel tapePanel;
-    JButton rightButton, leftButton;
+    ButtonRowPanel buttonPanel;
     TuringMachineTape tape;
     ArrayList<SimpleEntry<TuringMachineInternals, ImageIcon>> machines;
 
-    public TuringMachineTapeFrame(TuringMachineTape t, ArrayList<SimpleEntry<TuringMachineInternals, ImageIcon>> m) {
-        tape = t;
-        machines = m;
+    public TuringMachineTapeFrame() {
+        tape = new TuringMachineTape();
+        machines = new ArrayList();
+
+        add_machine();
 
         setTitle("Turing Machine Tape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1300, 240);
-        setLayout(null);
+        setSize(1080, 220);
 
         head = 0;
         width = 10;
 
         mainPanel = new JPanel();
-        mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        mainPanel.setSize(1100, 180);
-        mainPanel.setLocation(100, 10);
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-        headPanel = new HeadRowPanel(100, 40, 16, width);
-        tapePanel = new TwoLabelRowPanel(100, 110, 20, 60, width);
-
-        headPanel.setPreferredSize(new Dimension(100 * width, 40));
-        tapePanel.setPreferredSize(new Dimension(100 * width, 110));
-
-        mainPanel.add(headPanel);
-        mainPanel.add(tapePanel);
-
-        var path = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),"resources", "icon").toString();
-
-        rightButton = new JButton();
-        leftButton = new JButton();
-
-        rightButton.setSize(70, 70);
-        leftButton.setSize(70, 70);
-
-        rightButton.setIcon(new ImageIcon("resources/icons/arrow_right.png"));
-        rightButton.setPressedIcon(new ImageIcon("resources/icons/arrow_right_clicked.png"));
-        leftButton.setIcon(new ImageIcon("resources/icons/arrow_left.png"));
-        leftButton.setPressedIcon(new ImageIcon("resources/icons/arrow_left_clicked.png"));
-
-        rightButton.setBackground(Color.WHITE);
-        leftButton.setBackground(Color.WHITE);
-
-        rightButton.setLocation(1220, 60);
-        leftButton.setLocation(10, 60);
-
-        rightButton.addActionListener(new ActionListener() {
+        buttonPanel = new ButtonRowPanel(20, 20, 16, 5);
+        buttonPanel.setPreferredSize(new Dimension(20 * 5, 20));
+        buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        buttonPanel.setBackground(Color.LIGHT_GRAY);
+        buttonPanel.set(0, new ImageIcon("resources/icons/reset.png"));
+        buttonPanel.set(1, new ImageIcon("resources/icons/start.png"));
+        buttonPanel.set(2, new ImageIcon("resources/icons/play.png"));
+        buttonPanel.set(3, new ImageIcon("resources/icons/left.png"));
+        buttonPanel.set(4, new ImageIcon("resources/icons/right.png"));
+        buttonPanel.register(0, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ++head;
+                tape.clear();
+                head = 0;
+                machines.get(0).getKey().set_state(' ');
+                machines.get(0).getKey().set_head(0);
                 refresh_tape_labels();
             }
         });
-        leftButton.addActionListener(new ActionListener() {
+        buttonPanel.register(1, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                machines.get(0).getKey().run_once();
+                refresh_tape_labels();
+            }
+        });
+        buttonPanel.register(2, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                machines.get(0).getKey().run(100);
+                refresh_tape_labels();
+            }
+        });
+        buttonPanel.register(3, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 --head;
                 refresh_tape_labels();
             }
         });
+        buttonPanel.register(4, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ++head;
+                refresh_tape_labels();
+            }
+        });
+        mainPanel.add(buttonPanel);
+
+        headPanel = new HeadRowPanel(100, 20, 16, width);
+        tapePanel = new TwoLabelRowPanel(100, 100, 20, 60, width);
+
+        headPanel.setPreferredSize(new Dimension(100 * width, 20));
+        tapePanel.setPreferredSize(new Dimension(100 * width, 100));
+
+        mainPanel.add(headPanel);
+        mainPanel.add(tapePanel);
 
         add(mainPanel);
-        add(rightButton);
-        add(leftButton);
+
+        refresh_tape_labels();
 
         setResizable(false);
         setVisible(true);
+    }
+
+    public void add_machine() {
+        machines.add(new SimpleEntry(new TuringMachineInternals(tape), new ImageIcon("resources/icons/head.png")));
     }
 
     void refresh_tape_labels() {

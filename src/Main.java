@@ -1,5 +1,10 @@
 public class Main {
+    static TuringMachineTapeFrame mainFrame;
     public static void main(String[] args) {
-        new TuringMachineExternals();
+        mainFrame = new TuringMachineTapeFrame();
+    }
+
+    static TuringMachineTapeFrame getMainFrame() {
+        return mainFrame;
     }
 }

@@ -1,43 +1,32 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 class TuringMachineInstructionSet {
-    private ArrayList<TuringMachineInstruction> data;
+    private HashMap<Integer, TuringMachineInstruction> data;
 
     public TuringMachineInstructionSet() {
-        data = new ArrayList();
+        data = new HashMap<>();
     }
 
-    public void add_instruction(char state_before, char symbol_before, char state_after, char symbol_after, boolean right) {
-        TuringMachineInstruction instruction = new TuringMachineInstruction(state_before, symbol_before, state_after, symbol_after, right);
-
-        var i = data.indexOf(instruction);
-
-        if(i >= 0) {
-            data.set(i, instruction);
-        }
-        else {
-            data.add(instruction);
-
-            Collections.sort(data);
-        }
+    public void add_instruction(int i, char state_before, char symbol_before, char state_after, char symbol_after, char right) {
+        data.put(i, new TuringMachineInstruction(state_before, symbol_before, state_after, symbol_after, right));
     }
-    public void remove_instruction(char state, char symbol) {
-        data.remove(new TuringMachineInstruction(state, symbol, state, symbol, true));
+    public void remove_instruction(int i) {
+        data.remove(i);
     }
-    public TuringMachineInstruction get(char state, char symbol) {
-        TuringMachineInstruction instruction = new TuringMachineInstruction(state, symbol, state, symbol, true);
-
-        var i = data.indexOf(instruction);
-
-        if(i >= 0) {
-            return data.get(i);
-        }
-        else {
-            return null;
-        }
+    public TuringMachineInstruction get(int i) {
+        return data.get(i);
     }
-    public ArrayList<TuringMachineInstruction> get_instructions() {
-        return data;
+    public TuringMachineInstruction query(char state, char symbol) {
+        TuringMachineInstruction instruction = new TuringMachineInstruction(state, symbol, state, symbol, 'R');
+
+        for(var i : data.values()) {
+            if(i.equals(instruction)) {
+                return i;
+            }
+        }
+
+        return null;
     }
 }

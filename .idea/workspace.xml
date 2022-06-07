@@ -4,11 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="Minor size changes">
+    <list default="true" id="3bfdd2c3-710b-4a85-bc63-071cf8bc8a39" name="Changes" comment="A bunch of stuffs">
+      <change afterPath="$PROJECT_DIR$/resources/icons/down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/head.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/reset.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/start.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/up.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/arrow_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/arrow_left_clicked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/arrow_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/icons/arrow_right_clicked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineExternals.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachineInspectorFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInspectorFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInstructionSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInstructionSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineInternals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineInternals.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachinePanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachinePanels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TuringMachineTapeFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineTapeFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TuringMachineTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TuringMachineTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654575928930</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="A bunch of stuffs">
+      <created>1654577793273</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1654577793273</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,6 +253,7 @@
     <MESSAGE value="Minor changes to RowPanel" />
     <MESSAGE value="Make TuringMachineHeadButtonActionListener.add to accept integer index as input" />
     <MESSAGE value="Minor size changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor size changes" />
+    <MESSAGE value="A bunch of stuffs" />
+    <option name="LAST_COMMIT_MESSAGE" value="A bunch of stuffs" />
   </component>
 </project>

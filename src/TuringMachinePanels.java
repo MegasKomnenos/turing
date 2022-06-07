@@ -28,7 +28,7 @@ class HeadPanel extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            new TuringMachineInspectorFrame(machine, index);
+            new TuringMachineInspectorFrame(machine);
         }
     }
 
@@ -86,6 +86,217 @@ abstract class RowPanel<E> extends JPanel {
     abstract E genPanel();
 }
 
+class ButtonRowPanel extends RowPanel<JButton> {
+    public ButtonRowPanel(int w, int h, int s, int num) {
+        super(w, h, s, num);
+    }
+
+    void set(int i, ImageIcon icon) {
+        var button = panels.get(i);
+
+        button.setVisible(true);
+        button.setIcon(icon);
+    }
+    void register(int i, ActionListener l) {
+        var button = panels.get(i);
+
+        button.addActionListener(l);
+    }
+
+    void unset(int i) {
+        var button = panels.get(i);
+
+        if(button.isVisible()) {
+            button.setVisible(false);
+            button.setIcon(null);
+            button.removeActionListener(button.getActionListeners()[0]);
+            button.revalidate();
+        }
+    }
+
+    JButton genPanel() {
+        var button = new JButton();
+        button.setPreferredSize(new Dimension(size, size));
+        button.setOpaque(false);
+        button.setBorderPainted(false);
+        button.setBackground(Color.WHITE);
+        button.setVisible(false);
+        add(button);
+
+        return button;
+    }
+}
+
+class MachineRowPanel extends RowPanel<SimpleEntry<JPanel, JTextField>> {
+    TuringMachineInternals machine;
+
+    public MachineRowPanel(int w, int h, int s, TuringMachineInternals m) {
+        super(w, h, s, 3);
+        machine = m;
+
+        panels.get(0).getValue().setText(Integer.toString(machine.get_head()));
+        panels.get(1).getValue().setText(Character.toString(machine.get_state()));
+        panels.get(2).getValue().setText(Character.toString(machine.get_halt()));
+
+        panels.get(0).getValue().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var t = panels.get(0).getValue();
+                var s = t.getText().strip();
+
+                if(s != null && s.length() > 0) {
+                    try {
+                        int i = Integer.parseInt(s);
+                        t.setText(s);
+                        machine.set_head(i);
+                    } catch(NumberFormatException ex) {
+                        t.setText(Integer.toString(machine.get_head()));
+                    }
+                }
+                else {
+                    t.setText(Integer.toString(machine.get_head()));
+                }
+
+                Main.getMainFrame().refresh_tape_labels();
+            }
+        });
+        panels.get(1).getValue().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var t = panels.get(1).getValue();
+                var s = t.getText().strip();
+
+                if(s == null || s.length() == 0) {
+                    t.setText(" ");
+                    machine.set_state(' ');
+                }
+                else {
+                    t.setText(Character.toString(s.charAt(0)));
+                    machine.set_state(s.charAt(0));
+                }
+            }
+        });
+        panels.get(2).getValue().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                var t = panels.get(2).getValue();
+                var s = t.getText().strip();
+
+                if(s == null || s.length() == 0) {
+                    t.setText(" ");
+                    machine.set_halt(' ');
+                }
+                else {
+                    t.setText(Character.toString(s.charAt(0)));
+                    machine.set_halt(s.charAt(0));
+                }
+            }
+        });
+    }
+
+    SimpleEntry<JPanel, JTextField> genPanel() {
+        var p = new JPanel();
+        var t = new JTextField();
+
+        t.setPreferredSize(new Dimension(width - 8, height - 8));
+        t.setFont(new Font(Font.SERIF, Font.PLAIN, size));
+        p.setPreferredSize(new Dimension(width, height));
+        p.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        p.add(t);
+
+        add(p);
+
+        return new SimpleEntry<>(p, t);
+    }
+}
+
+class InstructionRowPanel extends RowPanel<SimpleEntry<JPanel, JTextField>> {
+    TuringMachineInternals machine;
+    TuringMachineInstruction instruction;
+    int row;
+
+    public InstructionRowPanel(int w, int h, int s, int num, TuringMachineInternals m) {
+        super(w, h, s, num);
+        machine = m;
+
+        setRow(0);
+
+        int i = 0;
+        for(var p : panels) {
+            p.getValue().addActionListener(new InstructionTextFieldActionListener(i++));
+        }
+    }
+
+    void setRow(int r) {
+        row = r;
+
+        instruction = machine.get_instruction(row);
+
+        int i = 0;
+        for(var p : panels) {
+            p.getValue().setText(instruction == null ? " " : Character.toString(instruction.data[i++]));
+        }
+    }
+
+    class InstructionTextFieldActionListener implements ActionListener {
+        int index;
+
+        public InstructionTextFieldActionListener(int i) {
+            index = i;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            var t = panels.get(index).getValue();
+            var s = t.getText().strip();
+
+            if(s == null || s.length() == 0) {
+                if(instruction != null) {
+                    instruction.data[index] = ' ';
+
+                    if(instruction.data[0] == ' ' && instruction.data[1] == ' ' && instruction.data[2] == ' ' && instruction.data[3] == ' ' && instruction.data[4] == ' ') {
+                        instruction = null;
+                        machine.remove_instruction(row);
+                    }
+                }
+
+                t.setText(" ");
+            }
+            else {
+                if(instruction == null) {
+                    machine.add_instruction(row, ' ', ' ', ' ', ' ', ' ');
+                    instruction = machine.get_instruction(row);
+                }
+
+                if(index == 4) {
+                    instruction.data[index] = s.charAt(0) == 'R' ? 'R' : 'L';
+                }
+                else {
+                    instruction.data[index] = s.charAt(0);
+                }
+
+                t.setText(Character.toString(instruction.data[index]));
+            }
+        }
+    }
+
+
+    SimpleEntry<JPanel, JTextField> genPanel() {
+        var p = new JPanel();
+        var t = new JTextField();
+
+        t.setPreferredSize(new Dimension(width - 8, height - 8));
+        t.setFont(new Font(Font.SERIF, Font.PLAIN, size));
+        p.setPreferredSize(new Dimension(width, height));
+        p.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        p.add(t);
+
+        add(p);
+
+        return new SimpleEntry<>(p, t);
+    }
+}
+
 class TwoLabelRowPanel extends RowPanel<SimpleEntry<JPanel, SimpleEntry<JLabel, JLabel>>> {
     int size_other;
 
@@ -116,6 +327,8 @@ class TwoLabelRowPanel extends RowPanel<SimpleEntry<JPanel, SimpleEntry<JLabel, 
 
         l.setAlignmentX(Component.CENTER_ALIGNMENT);
         ll.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l.setPreferredSize(new Dimension(size, size));
+        ll.setPreferredSize(new Dimension(size_other, size_other));
 
         p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
         p.add(l);

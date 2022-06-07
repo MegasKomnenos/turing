@@ -61,9 +61,9 @@ class TuringMachineTest {
         assert(machine.get(2) == ' ');
         assert(machine.get(-3) == ' ');
 
-        machine.add_instruction(' ', 's', ' ', 's', true);
+        machine.add_instruction(0, ' ', 's', ' ', 's', 'R');
 
-        assert(machine.get_instructions().get(0).symbol_after == 's');
+        assert(machine.get_instruction(0).data[3] == 's');
 
         machine.run_once();
         machine.run_once();
@@ -84,7 +84,7 @@ class TuringMachineTest {
 
         assert(machine.get_head() == 1);
 
-        machine.add_instruction(' ', ' ', ' ', 's', true);
+        machine.add_instruction(1, ' ', ' ', ' ', 's', 'R');
 
         machine.run_once();
 
@@ -98,12 +98,12 @@ class TuringMachineTest {
         var tape = new TuringMachineTape();
         var machine = new TuringMachineInternals(tape);
 
-        machine.add_instruction('A', ' ', 'B', '1', true);
-        machine.add_instruction('A', '1', 'C', '1', false);
-        machine.add_instruction('B', ' ', 'A', '1', false);
-        machine.add_instruction('B', '1', 'B', '1', true);
-        machine.add_instruction('C', ' ', 'B', '1', false);
-        machine.add_instruction('C', '1', 'H', '1', true);
+        machine.add_instruction(0, 'A', ' ', 'B', '1', 'R');
+        machine.add_instruction(1, 'A', '1', 'C', '1', 'L');
+        machine.add_instruction(2, 'B', ' ', 'A', '1', 'L');
+        machine.add_instruction(3, 'B', '1', 'B', '1', 'R');
+        machine.add_instruction(4, 'C', ' ', 'B', '1', 'L');
+        machine.add_instruction(5, 'C', '1', 'H', '1', 'R');
 
         machine.set_state('A');
         machine.set_halt('H');

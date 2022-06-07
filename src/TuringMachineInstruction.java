@@ -1,28 +1,28 @@
 class TuringMachineInstruction implements Comparable<TuringMachineInstruction> {
-    char state_before, symbol_before, state_after, symbol_after;
-    boolean right;
+    char[] data;
 
-    public TuringMachineInstruction(char st_b, char sy_b, char st_a, char sy_a, boolean r) {
-        state_before = st_b;
-        symbol_before = sy_b;
-        state_after = st_a;
-        symbol_after = sy_a;
-        right = r;
+    public TuringMachineInstruction(char st_b, char sy_b, char st_a, char sy_a, char r) {
+        data = new char[5];
+        data[0] = st_b;
+        data[1] = sy_b;
+        data[2] = st_a;
+        data[3] = sy_a;
+        data[4] = r == 'R' ? 'R' : 'L';
     }
 
     @Override
     public int compareTo(TuringMachineInstruction p) {
-        if(state_before < p.state_before) {
+        if(data[0] < p.data[0]) {
             return -1;
         }
-        else if(state_before > p.state_before) {
+        else if(data[0] > p.data[0]) {
             return 1;
         }
         else {
-            if(symbol_before < p.symbol_before) {
+            if(data[1] < p.data[1]) {
                 return -1;
             }
-            else if(symbol_before > p.symbol_after) {
+            else if(data[1] > p.data[1]) {
                 return 1;
             }
             else {
@@ -42,6 +42,6 @@ class TuringMachineInstruction implements Comparable<TuringMachineInstruction> {
 
         var instruction = (TuringMachineInstruction) obj;
 
-        return instruction.state_before == this.state_before && instruction.symbol_before == this.symbol_before;
+        return instruction.data[0] == this.data[0] && instruction.data[1] == this.data[1];
     }
 }
