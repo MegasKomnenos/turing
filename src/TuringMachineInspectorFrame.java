@@ -62,7 +62,7 @@ public class TuringMachineInspectorFrame extends JFrame {
                 .limit(7)
                 .collect(Collectors.toCollection(ArrayList::new));
 
-        refresh_tape_labels();
+        refresh_inspector_labels();
 
         buttonPanel = new ButtonRowPanel(20, 20, 16, 2);
         buttonPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
@@ -76,7 +76,7 @@ public class TuringMachineInspectorFrame extends JFrame {
                     head = 0;
                 } else {
                     --head;
-                    refresh_tape_labels();
+                    refresh_inspector_labels();
                 }
             }
         });
@@ -84,7 +84,7 @@ public class TuringMachineInspectorFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ++head;
-                refresh_tape_labels();
+                refresh_inspector_labels();
             }
         });
         mainPanel.add(buttonPanel);
@@ -95,7 +95,7 @@ public class TuringMachineInspectorFrame extends JFrame {
         setVisible(true);
     }
 
-    void refresh_tape_labels() {
+    void refresh_inspector_labels() {
         int i = head;
         for(var p : instPanels) {
             p.setRow(i++);
