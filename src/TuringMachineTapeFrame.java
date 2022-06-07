@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 class TuringMachineTapeFrame extends JFrame {
     int head, width;
     JPanel mainPanel;
-    ArrayList<TapePanel> panels;
+    HeadRowPanel headPanel;
+    ItemRowPanel indexPanel, valuePanel;
     JButton rightButton, leftButton;
     TuringMachineTape tape;
     ArrayList<SimpleEntry<TuringMachineInternals, ImageIcon>> machines;
@@ -22,7 +23,7 @@ class TuringMachineTapeFrame extends JFrame {
 
         setTitle("Turing Machine Tape");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(1300, 320);
+        setSize(1300, 310);
         setLayout(null);
 
         head = 0;
@@ -30,17 +31,17 @@ class TuringMachineTapeFrame extends JFrame {
 
         mainPanel = new JPanel();
         mainPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        mainPanel.setSize(1100, 260);
+        mainPanel.setSize(1100, 250);
         mainPanel.setLocation(100, 10);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
 
-        panels = Stream
-                .generate(() -> {
-                    var p = new TapePanel(100, 240, 16);
-                    mainPanel.add(p);
-                    return p;
-                })
-                .limit(width)
-                .collect(Collectors.toCollection(ArrayList::new));
+        headPanel = new HeadRowPanel(100, 40, 16, width);
+        indexPanel = new ItemRowPanel(100, 50, 25, width);
+        valuePanel = new ItemRowPanel(100, 100, 60, width);
+
+        mainPanel.add(headPanel);
+        mainPanel.add(indexPanel);
+        mainPanel.add(valuePanel);
 
         var path = Paths.get(Paths.get(System.getProperty("user.dir")).toString(),"resources", "icon").toString();
 
@@ -58,8 +59,8 @@ class TuringMachineTapeFrame extends JFrame {
         rightButton.setBackground(Color.WHITE);
         leftButton.setBackground(Color.WHITE);
 
-        rightButton.setLocation(1226, 130);
-        leftButton.setLocation(10, 130);
+        rightButton.setLocation(1226, 100);
+        leftButton.setLocation(10, 100);
 
         rightButton.addActionListener(new ActionListener() {
             @Override
@@ -87,16 +88,19 @@ class TuringMachineTapeFrame extends JFrame {
     void refresh_tape_labels() {
         int i = head - width / 2;
 
-        for(var p : panels) {
-            p.set_index(Integer.toString(i));
-            p.set_value(Character.toString(tape.get(i)));
-            p.clear_icon();
+        for(int j = 0; j < width; ++j) {
+            var t = headPanel.get(j);
+
+            t.clear();
 
             for(var m : machines) {
                 if(m.getKey().get_head() == i) {
-                    p.add_icon(m.getValue());
+                    t.add(m);
                 }
             }
+
+            indexPanel.get(j).getValue().setText(Integer.toString(i));
+            valuePanel.get(j).getValue().setText(Character.toString(tape.get(i)));
 
             ++i;
         }
